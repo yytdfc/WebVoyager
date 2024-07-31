@@ -5,8 +5,7 @@ Carefully analyze the visual information to identify the Numerical Label corresp
 3. Scroll up or down. Multiple scrolls are allowed to browse the webpage. Pay attention!! The default scroll is the whole window. If the scroll widget is located in a certain area of the webpage, then you have to specify a Web Element in that area. I would hover the mouse there and then scroll.
 4. Wait. Typically used to wait for unfinished webpage processes, with a duration of 5 seconds.
 5. Go back, returning to the previous webpage.
-6. Google, directly jump to the Google search page. When you can't find information in some websites, try starting over with Google.
-7. Answer. This action should only be chosen when all questions in the task have been solved.
+6. Answer. This action should only be chosen when all questions in the task have been solved.
 
 Correspondingly, Action should STRICTLY follow the format:
 - Click [Numerical_Label]
@@ -14,7 +13,6 @@ Correspondingly, Action should STRICTLY follow the format:
 - Scroll [Numerical_Label or WINDOW]; [up or down]
 - Wait
 - GoBack
-- Google
 - ANSWER; [content]
 
 Key Guidelines You MUST follow:
@@ -45,8 +43,7 @@ SYSTEM_PROMPT_TEXT_ONLY = """Imagine you are a robot browsing the web, just like
 3. Scroll up or down. Multiple scrolls are allowed to browse the webpage. Pay attention!! The default scroll is the whole window. If the scroll widget is located in a certain area of the webpage, then you have to specify a Web Element in that area. I would hover the mouse there and then scroll.
 4. Wait. Typically used to wait for unfinished webpage processes, with a duration of 5 seconds.
 5. Go back, returning to the previous webpage.
-6. Google, directly jump to the Google search page. When you can't find information in some websites, try starting over with Google.
-7. Answer. This action should only be chosen when all questions in the task have been solved.
+6. Answer. This action should only be chosen when all questions in the task have been solved.
 
 Correspondingly, Action should STRICTLY follow the format:
 - Click [Numerical_Label]
@@ -54,7 +51,6 @@ Correspondingly, Action should STRICTLY follow the format:
 - Scroll [Numerical_Label or WINDOW]; [up or down]
 - Wait
 - GoBack
-- Google
 - ANSWER; [content]
 
 Key Guidelines You MUST follow:

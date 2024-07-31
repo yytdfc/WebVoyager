@@ -10,17 +10,17 @@ from utils_webarena import fetch_browser_info, fetch_page_accessibility_tree,\
                     parse_accessibility_tree, clean_accesibility_tree
 
 
-def resize_image(image_path):
+def resize_image(image_path, max_size=512):
     image = Image.open(image_path)
     width, height = image.size
 
-    if min(width, height) < 512:
+    if min(width, height) < max_size:
         return image
     elif width < height:
-        new_width = 512
+        new_width = max_size
         new_height = int(height * (new_width / width))
     else:
-        new_height = 512
+        new_height = max_size
         new_width = int(width * (new_height / height))
 
     resized_image = image.resize((new_width, new_height), Image.LANCZOS)
@@ -269,11 +269,12 @@ def clip_message_and_obs(msg, max_img_num):
                 img_num += 1
                 clipped_msg = [curr_msg] + clipped_msg
             else:
-                msg_no_pdf = curr_msg['content'][0]["text"].split("Observation:")[0].strip() + "Observation: A screenshot and some texts. (Omitted in context.)"
-                msg_pdf = curr_msg['content'][0]["text"].split("Observation:")[0].strip() + "Observation: A screenshot, a PDF file and some texts. (Omitted in context.)"
+                text_idx = 0 if "text" in curr_msg['content'][0] else 1
+                msg_no_pdf = curr_msg['content'][text_idx]["text"].split("Observation:")[0].strip() + "Observation: A screenshot and some texts. (Omitted in context.)"
+                msg_pdf = curr_msg['content'][text_idx]["text"].split("Observation:")[0].strip() + "Observation: A screenshot, a PDF file and some texts. (Omitted in context.)"
                 curr_msg_clip = {
                     'role': curr_msg['role'],
-                    'content': msg_no_pdf if "You downloaded a PDF file" not in curr_msg['content'][0]["text"] else msg_pdf
+                    'content': msg_no_pdf if "You downloaded a PDF file" not in curr_msg['content'][text_idx]["text"] else msg_pdf
                 }
                 clipped_msg = [curr_msg_clip] + clipped_msg
     return clipped_msg
